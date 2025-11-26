@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #09090b; /* zinc-950 */
+        color: #fafafa; /* zinc-50 */
+      }
+      /* Custom scrollbar for Webkit */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #09090b; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #27272a; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #3f3f46; 
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              background: '#09090b',
+              foreground: '#fafafa',
+              card: {
+                DEFAULT: '#09090b',
+                foreground: '#fafafa',
+              },
+              popover: {
+                DEFAULT: '#09090b',
+                foreground: '#fafafa',
+              },
+              primary: {
+                DEFAULT: '#fafafa',
+                foreground: '#18181b',
+              },
+              secondary: {
+                DEFAULT: '#27272a',
+                foreground: '#fafafa',
+              },
+              muted: {
+                DEFAULT: '#27272a',
+                foreground: '#a1a1aa',
+              },
+              accent: {
+                DEFAULT: '#27272a',
+                foreground: '#fafafa',
+              },
+              destructive: {
+                DEFAULT: '#7f1d1d',
+                foreground: '#fafafa',
+              },
+              border: '#27272a',
+              input: '#27272a',
+              ring: '#d4d4d8',
+              spotify: {
+                green: '#1DB954',
+              }
+            },
+            borderRadius: {
+              lg: '0.5rem',
+              md: 'calc(0.5rem - 2px)',
+              sm: 'calc(0.5rem - 4px)',
+            },
+          },
+        },
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "recharts": "https://aistudiocdn.com/recharts@^3.5.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+{
+  "name": "Spotify Analytics Dashboard",
+  "description": "A high-fidelity analytics dashboard integrating with Spotify Web API, featuring top tracks, artist insights, and user profile data using a shadcn/ui inspired aesthetic.",
+  "requestFramePermissions": []
+}
