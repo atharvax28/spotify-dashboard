@@ -72,22 +72,33 @@ export const loginWithPopup = async (clientId: string): Promise<string> => {
       // demo we trust the message content structure since we control the sender.
       if (event.data?.type === 'SPOTIFY_LOGIN_SUCCESS' && event.data?.token) {
         window.removeEventListener('message', handleMessage);
+        clearInterval(checkClosed);
+        clearTimeout(timeout);
         popup.close();
         resolve(event.data.token);
       }
     };
 
     window.addEventListener('message', handleMessage);
-    
-    // Safety timeout in case user closes popup manually
+
+    // Safety timeout and closure handling so the button doesn't stay disabled forever
+    const rejectWithCleanup = (message: string) => {
+      clearInterval(checkClosed);
+      clearTimeout(timeout);
+      window.removeEventListener('message', handleMessage);
+      reject(new Error(message));
+    };
+
     const checkClosed = setInterval(() => {
       if (popup.closed) {
-        clearInterval(checkClosed);
-        window.removeEventListener('message', handleMessage);
-        // We don't reject here because the user might have just closed it, 
-        // effectively cancelling. The promise will just hang which is fine for UI.
+        rejectWithCleanup('Login cancelled - popup was closed.');
       }
     }, 1000);
+
+    const timeout = setTimeout(() => {
+      if (!popup.closed) popup.close();
+      rejectWithCleanup('Login timed out. Please try again.');
+    }, 60000);
   });
 };
 
